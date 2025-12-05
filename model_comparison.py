@@ -9,13 +9,13 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 import time
+from sklearn import metrics
 
 ## Hyperparameters
-batch_size_train = 64
-batch_size_test = 16
+batch_size_train = 32
+batch_size_test = 42
 learning_rate = 1e-3
 epochs = 500
-eval_epochs = 20
 
 ## Define used device
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -126,7 +126,7 @@ with torch.no_grad():
 
         total += labels.size(0)
         correct += (predicted == labels).sum().item()
-
+        
 accuracy = 100 * correct / total
 print(f'CNN_52x600 accuracy : {accuracy:.2f}')
 
