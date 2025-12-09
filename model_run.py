@@ -8,7 +8,6 @@ import torch.optim as optim
 import time
 import json
 from sklearn.metrics import confusion_matrix
-import numpy as np
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Working with {device}")
@@ -16,11 +15,8 @@ print(f"Working with {device}")
 ## Hyperparameters
 learning_rate = 1e-3 ## Learning rate for the optimizer
 input_size = "64x64" ## Size of the input images
-epochs = 100         ## Number of epochs for the training
-num_runs = 10        ## Number of run, to get an average result at the end 
-
-## Get the model
-from models.model_64x64_4conv_1fc import CNN64x64_4CONV1FC
+epochs = 150         ## Number of epochs for the training
+num_runs = 20        ## Number of run, to get an average result at the end 
 
 ## Get the data
 _train_tensor = torch.load(f'tensors/train_tensors_{input_size}.pt')
@@ -40,12 +36,15 @@ accuracy = []        ## Accuracy when testing the model
 training_time = []   ## Taken time for the training part
 conf_matrix = []     ## Average confusion matrix
 
+## Get the model
+from models.model_64x64_4conv_2fc import CNN64x64_4CONV2FC
+
 ## Make the runs
 for run in range(num_runs):
     print(f">>>>> Run [{run+1}/{num_runs}]")
 
     # Model
-    model = CNN64x64_4CONV1FC().to(device)
+    model = CNN64x64_4CONV2FC().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr = learning_rate)
 
@@ -108,5 +107,5 @@ results = {
     }
 }
 
-with open(f"results/{type(model).__name__}.json", "a") as f:
+with open(f"results/{type(model).__name__}.json", "w") as f:
     f.write(json.dumps(results, indent = 2))
