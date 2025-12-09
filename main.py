@@ -1,6 +1,5 @@
 from dataloader import Dataset
-from model_square_images import CNNSquareImages
-from model_unmodified_images import CNNUntouchedImages
+from model_paper import CNN
 import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
@@ -8,10 +7,10 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 ## Import data
-_train_tensor = torch.load('tensors/train_tensors.pt')
-_train_labels = torch.load('tensors/train_labels.pt')
-_test_tensor = torch.load('tensors/test_tensors.pt')
-_test_labels = torch.load('tensors/test_labels.pt')
+_train_tensor = torch.load('tensors/train_tensors_52x600.pt')
+_train_labels = torch.load('tensors/train_labels_52x600.pt')
+_test_tensor = torch.load('tensors/test_tensors_52x600.pt')
+_test_labels = torch.load('tensors/test_labels_52x600.pt')
 
 train_dataset = Dataset(torch.stack(_train_tensor, dim = 0).unsqueeze(1), _train_labels)
 test_dataset = Dataset(torch.stack(_test_tensor, dim = 0).unsqueeze(1), _test_labels)
@@ -23,7 +22,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 ## Import model and initialize it
 
-model = CNNUntouchedImages().to(device)
+model = CNN().to(device)
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr = 1e-3)
