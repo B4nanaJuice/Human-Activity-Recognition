@@ -39,7 +39,7 @@ In order to get good results on the models, I will make several runs of the same
 
 ### 4. **Result storage**
 
-After all the runs, the results are stored into JSON files, as it is easy, fast and easy to read. The JSON structure will be :
+After all the runs, the results are stored into JSON files, as it is easy to use, fast and easily readable. The JSON structure will be :
 ```
 ├── hyperparameters
 │    ├── learning rate
