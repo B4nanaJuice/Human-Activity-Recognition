@@ -62,6 +62,9 @@ ax4.set_xlabel('Predicted label')
 ax4.set_ylabel('True label')
 ax4.set_xticks([_ for _ in range(7)], classes, rotation = 90)
 ax4.set_yticks([_ for _ in range(7)], classes)
+ax4.tick_params(axis = 'x', bottom = True, top = False, labelbottom = True, labeltop = False)
+plt.setp([tick.label1 for tick in ax4.xaxis.get_major_ticks()], rotation=45,
+         ha="right", va="center", rotation_mode="anchor")
 ax4.set_title(f'Confusion matrix on {num_runs} runs')
 fig.colorbar(pos, ax = ax4)
 
