@@ -14,7 +14,7 @@ print(f"Working with {device}")
 
 ## Hyperparameters
 learning_rate = 1e-3 ## Learning rate for the optimizer
-input_size = "64x64" ## Size of the input images
+input_size = "52x600"## Size of the input images
 epochs = 150         ## Number of epochs for the training
 num_runs = 20        ## Number of run, to get an average result at the end 
 
@@ -37,14 +37,14 @@ training_time = []   ## Taken time for the training part
 conf_matrix = []     ## Average confusion matrix
 
 ## Get the model
-from models.model_64x64_4conv_2fc import CNN64x64_4CONV2FC
+from models.model_52x600_2conv_1fc import CNN52x600_2CONV1FC
 
 ## Make the runs
 for run in range(num_runs):
     print(f">>>>> Run [{run+1}/{num_runs}]")
 
     # Model
-    model = CNN64x64_4CONV2FC().to(device)
+    model = CNN52x600_2CONV1FC().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr = learning_rate)
 
