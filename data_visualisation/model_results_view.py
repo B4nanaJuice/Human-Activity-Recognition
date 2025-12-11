@@ -1,10 +1,9 @@
 import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import json
 
 ## Overall data
-image_size = "64x64"
-conv_layers = 2
+image_size = "52x600"
+conv_layers = 3
 fc_layers = 2
 
 file_name = f"CNN{image_size}_{conv_layers}CONV{fc_layers}FC.json"
@@ -29,6 +28,7 @@ average_tt = round(sum(training_time) / num_runs, 2)
 ax1.plot(runs, training_time, '-', runs, [average_tt] * num_runs, '--')
 ax1.set_xlabel('Run index')
 ax1.set_ylabel('Time taken (s)')
+ax1.set_xticks([_+1 for _ in range(num_runs)])
 ax1.set_title('Training time')
 ax1.legend(['Measurments', f'Average ({average_tt}s)'])
 ax1.grid(visible = True)
@@ -49,6 +49,7 @@ average_acc = round(sum(accuracy) / num_runs, 2)
 ax3.plot(runs, accuracy, '-', runs, [average_acc] * num_runs, '--')
 ax3.set_xlabel('Run index')
 ax3.set_ylabel('Accuracy (%)')
+ax3.set_xticks([_+1 for _ in range(num_runs)])
 ax3.set_title('Model evaluation')
 ax3.set_ylim([50, 100])
 ax3.legend(['Measurments', f'Average ({average_acc}%)'])
