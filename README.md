@@ -66,6 +66,8 @@ In order to view, plot and compare the different models, I need to use `matplotl
 
 * The second will plot a graph with the information of different models : for example the training time for a model with 2, 3 or 4 convolutional layers
 
+![Example of comparison of multiple models](img/example_models_comparison.png)
+
 ---
 
 ## 🔧 Requirements
