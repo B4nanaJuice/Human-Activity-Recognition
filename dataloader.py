@@ -38,4 +38,4 @@ def csv_to_tensor(file_name: str, tensor_size: tuple[int, int] = (64, 64)) -> to
     _tensor = torch.from_numpy(_result).unsqueeze(0).unsqueeze(0)
     _tensor = F.adaptive_avg_pool2d(_tensor, tensor_size)
     _tensor = _tensor.squeeze()
-    return _tensor # Tensor [1, 64, 64]
+    return _tensor # Tensor [1, 64, 64] or [1, 52, 600]

@@ -37,14 +37,14 @@ training_time = []   ## Taken time for the training part
 conf_matrix = []     ## Average confusion matrix
 
 ## Get the model
-from models.model_52x600_2conv_1fc import CNN52x600_2CONV1FC
+from models.model_52x600_4conv_2fc import CNN52x600_4CONV2FC
 
 ## Make the runs
 for run in range(num_runs):
     print(f">>>>> Run [{run+1}/{num_runs}]")
 
     # Model
-    model = CNN52x600_2CONV1FC().to(device)
+    model = CNN52x600_4CONV2FC().to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr = learning_rate)
 
