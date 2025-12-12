@@ -1,5 +1,4 @@
 from dataloader import Dataset
-from model_paper import CNN
 import torch
 from torch.utils.data import DataLoader
 import torch.nn as nn
