@@ -13,10 +13,10 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Working with {device}")
 
 ## Hyperparameters
-learning_rate = 1e-3 ## Learning rate for the optimizer
-input_size = "52x600"## Size of the input images
-epochs = 150         ## Number of epochs for the training
-num_runs = 20        ## Number of run, to get an average result at the end 
+learning_rate = 1e-3      ## Learning rate for the optimizer
+input_size = "52x600"     ## Size of the input images
+epochs = 150              ## Number of epochs for the training
+num_runs = 20             ## Number of run, to get an average result at the end 
 
 ## Get the data
 _train_tensor = torch.load(f'tensors/train_tensors_{input_size}.pt')
@@ -31,10 +31,10 @@ train_loader = DataLoader(train_dataset, batch_size = 32, shuffle = True)
 test_loader = DataLoader(test_dataset, batch_size = 32, shuffle = True)
 
 ## Result variables
-losses = []          ## Losses during the training part
-accuracy = []        ## Accuracy when testing the model
-training_time = []   ## Taken time for the training part
-conf_matrix = []     ## Average confusion matrix
+losses = []               ## Losses during the training part
+accuracy = []             ## Accuracy when testing the model
+training_time = []        ## Taken time for the training part
+conf_matrix = []          ## Average confusion matrix
 
 ## Get the model
 from models.model_52x600_4conv_2fc import CNN52x600_4CONV2FC
