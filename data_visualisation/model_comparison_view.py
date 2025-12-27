@@ -3,8 +3,8 @@ import json
 import numpy as np
 
 ## Decide which comparison to make
-image_size: str | list[str] = "52x600"
-conv_layer: int | list[int] = [2, 3, 4]
+image_size: str | list[str] = ["64x64", "52x600"]
+conv_layer: int | list[int] = 4
 fc_layer: int | list[int] = 1
 
 accuracies: list = []
@@ -29,7 +29,7 @@ else:
 ## Import data from each json file
 for file in files:
     # Import file
-    with open(f"results/{file}.json", 'r') as f:
+    with open(f"results/80-20/{file}.json", 'r') as f:
         data = json.loads(f.read())
 
     # Get data and put it into lists

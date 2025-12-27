@@ -2,12 +2,12 @@ import matplotlib.pyplot as plt
 import json
 
 ## Overall data
-image_size = "52x600"
-conv_layers = 3
-fc_layers = 2
+image_size = "64x64"
+conv_layers = 4
+fc_layers = 1
 
 file_name = f"CNN{image_size}_{conv_layers}CONV{fc_layers}FC.json"
-with open(f"results/{file_name}", 'r') as f:
+with open(f"results/80-20/{file_name}", 'r') as f:
     data = json.loads(f.read())
 
 num_runs = data["hyperparameters"]["num_runs"]
